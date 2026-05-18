@@ -400,10 +400,26 @@ markmap:
       mm.setData(JSON.parse(JSON.stringify(originalRoot)));
 
       setTimeout(() => {
+        const svgEl = document.getElementById('markmap');
+        const g = svgEl.querySelector('g');
+        
+        // Obtenemos el tamaño real del mapa desplegado al 100%
+        const bbox = g.getBBox();
+        const padding = 100;
+        const realWidth = Math.ceil(bbox.width + padding * 2);
+        const realHeight = Math.ceil(bbox.height + padding * 2);
+
+        // Guardamos los estilos originales
+        const oldW = svgEl.style.width || '';
+        const oldH = svgEl.style.height || '';
+
+        // Forzamos al SVG a tener el tamaño exacto del mapa para que renderice 1:1
+        svgEl.style.width = realWidth + 'px';
+        svgEl.style.height = realHeight + 'px';
+
         mm.fit().then(() => {
           setTimeout(() => {
-            // En lugar de solo ocultar, quitamos temporalmente los audios del DOM
-            // porque html-to-image falla si el archivo mp3 todavía no existe (da 404)
+            // Quitamos temporalmente los audios del DOM
             const audios = document.querySelectorAll('audio');
             const audioPlaceholders = [];
             audios.forEach(a => {
@@ -413,12 +429,17 @@ markmap:
               audioPlaceholders.push({ placeholder, audio: a });
             });
 
-            const captureNode = document.getElementById('capture-container');
-
-            htmlToImage.toPng(captureNode, { 
-              pixelRatio: 2,
+            // Solo capturamos el SVG, ignorando el resto de la interfaz y la pantalla
+            htmlToImage.toPng(svgEl, { 
+              bgcolor: '#f5f7fa',
+              width: realWidth,
+              height: realHeight,
+              pixelRatio: 2, // Resolución excelente a escala real
+              style: {
+                margin: '0',
+                padding: '0'
+              },
               filter: (node) => {
-                // Filtro extremo: ignorar CUALQUIER elemento inyectado que no esté en nuestro contenedor principal
                 if (node.tagName === 'IMG' && node.id && node.id.includes('community_highlight')) return false;
                 if (node.src && typeof node.src === 'string' && node.src.startsWith('chrome-extension://')) return false;
                 return true;
@@ -430,11 +451,14 @@ markmap:
               link.href = dataUrl;
               link.click();
 
-              // Restaurar UI, audios y nivel de expansión
-              uiElements.forEach(el => el.style.display = '');
+              // Restaurar SVG, audios y UI
+              svgEl.style.width = oldW;
+              svgEl.style.height = oldH;
               audioPlaceholders.forEach(item => {
                 item.placeholder.parentNode.replaceChild(item.audio, item.placeholder);
               });
+              uiElements.forEach(el => el.style.display = '');
+              
               btn.innerHTML = originalText;
               mm.setOptions({ initialExpandLevel: 2 });
               mm.setData(JSON.parse(JSON.stringify(originalRoot)));
@@ -442,16 +466,20 @@ markmap:
             })
             .catch(function (error) {
               console.error('Error capturando el mapa:', error);
-              uiElements.forEach(el => el.style.display = '');
+              // Restaurar si falla
+              svgEl.style.width = oldW;
+              svgEl.style.height = oldH;
               audioPlaceholders.forEach(item => {
                 if(item.placeholder.parentNode) {
                   item.placeholder.parentNode.replaceChild(item.audio, item.placeholder);
                 }
               });
+              uiElements.forEach(el => el.style.display = '');
+              
               btn.innerHTML = '❌ Error';
               setTimeout(() => btn.innerHTML = originalText, 2000);
             });
-          }, 300);
+          }, 400); // Dar un poco más de tiempo para asentar el fit()
         });
       }, 600);
     };

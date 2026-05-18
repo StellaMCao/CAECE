@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="mindmap" class="markmap mindmap" style="--markmap-max-width: 220px;"><style>.markmap {
+  --markmap-max-width: 9999px;
+  --markmap-a-color: #0097e6;
+  --markmap-a-hover-color: #00a8ff;
+  --markmap-code-bg: #f0f0f0;
+  --markmap-code-color: #555;
+  --markmap-highlight-bg: #ffeaa7;
+  --markmap-table-border: 1px solid currentColor;
+  --markmap-font: 300 16px/20px sans-serif;
+  --markmap-circle-open-bg: #fff;
+  --markmap-text-color: #333;
+  --markmap-highlight-node-bg: #ff02;
+
+  font: var(--markmap-font);
+  color: var(--markmap-text-color);
+}
+
+  .markmap-link {
+    fill: none;
+  }
+
+  .markmap-node &gt; circle {
+      cursor: pointer;
+    }
+
+  .markmap-foreign {
+    display: inline-block;
+  }
+
+  .markmap-foreign p {
+      margin: 0;
+    }
+
+  .markmap-foreign a {
+      color: var(--markmap-a-color);
+    }
+
+  .markmap-foreign a:hover {
+        color: var(--markmap-a-hover-color);
+      }
+
+  .markmap-foreign code {
+      padding: 0.25em;
+      font-size: calc(1em - 2px);
+      color: var(--markmap-code-color);
+      background-color: var(--markmap-code-bg);
+      border-radius: 2px;
+    }
+
+  .markmap-foreign pre {
+      margin: 0;
+    }
+
+  .markmap-foreign pre &gt; code {
+        display: block;
+      }
+
+  .markmap-foreign del {
+      text-decoration: line-through;
+    }
+
+  .markmap-foreign em {
+      font-style: italic;
+    }
+
+  .markmap-foreign strong {
+      font-weight: bold;
+    }
+
+  .markmap-foreign mark {
+      background: var(--markmap-highlight-bg);
+    }
+
+  .markmap-foreign table,
+    .markmap-foreign th,
+    .markmap-foreign td {
+      border-collapse: collapse;
+      border: var(--markmap-table-border);
+    }
+
+  .markmap-foreign img {
+      display: inline-block;
+    }
+
+  .markmap-foreign svg {
+      fill: currentColor;
+    }
+
+  .markmap-foreign &gt; div {
+      width: var(--markmap-max-width);
+      text-align: left;
+    }
+
+  .markmap-foreign &gt; div &gt; div {
+        display: inline-block;
+      }
+
+  .markmap-highlight rect {
+    fill: var(--markmap-highlight-node-bg);
+  }
+
+.markmap-dark .markmap {
+  --markmap-code-bg: #1a1b26;
+  --markmap-code-color: #ddd;
+  --markmap-circle-open-bg: #444;
+  --markmap-text-color: #eee;
+}
+</style><g transform="translate(10.080000305175815,356.8131120879526) scale(0.2767630141594506)"><path class="markmap-link" data-depth="2" data-path="1.2" d="M236,21.25C276,21.25,276,-186.75,316,-186.75" stroke-width="1.75" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="2" data-path="1.30" d="M236,21.25C276,21.25,276,-114.906,316,-114.906" stroke-width="1.75" stroke="rgb(188, 189, 34)"/><path class="markmap-link" data-depth="2" data-path="1.56" d="M236,21.25C276,21.25,276,-3.062,316,-3.062" stroke-width="1.75" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="2" data-path="1.90" d="M236,21.25C276,21.25,276,148.25,316,148.25" stroke-width="1.75" stroke="rgb(148, 103, 189)"/><path class="markmap-link" data-depth="2" data-path="1.126" d="M236,21.25C276,21.25,276,195,316,195" stroke-width="1.75" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="2" data-path="1.204" d="M236,21.25C276,21.25,276,221.75,316,221.75" stroke-width="1.75" stroke="rgb(44, 160, 44)"/><path class="markmap-link" data-depth="2" data-path="1.218" d="M236,21.25C276,21.25,276,248.5,316,248.5" stroke-width="1.75" stroke="rgb(214, 39, 40)"/><path class="markmap-link" data-depth="3" data-path="1.2.3" d="M552,-186.75C592,-186.75,592,-246.5,632,-246.5" stroke-width="1.375" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="3" data-path="1.2.5" d="M552,-186.75C592,-186.75,592,-220.125,632,-220.125" stroke-width="1.375" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="3" data-path="1.2.13" d="M552,-186.75C592,-186.75,592,-173.75,632,-173.75" stroke-width="1.375" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="3" data-path="1.2.22" d="M552,-186.75C592,-186.75,592,-147.375,632,-147.375" stroke-width="1.375" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="4" data-path="1.2.3.4" d="M868,-246.5C908,-246.5,908,-245.594,948,-245.594" stroke-width="1.1875" stroke="rgb(255, 127, 14)"/><path class="markmap-link" data-depth="4" data-path="1.56.57.58" d="M868,-76C908,-76,908,-75.094,948,-75.094" stroke-width="1.1875" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="3" data-path="1.56.57" d="M552,-3.062C592,-3.062,592,-76,632,-76" stroke-width="1.375" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="3" data-path="1.56.59" d="M552,-3.062C592,-3.062,592,-49.625,632,-49.625" stroke-width="1.375" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="3" data-path="1.56.64" d="M552,-3.062C592,-3.062,592,-3.25,632,-3.25" stroke-width="1.375" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="3" data-path="1.56.72" d="M552,-3.062C592,-3.062,592,23.125,632,23.125" stroke-width="1.375" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="3" data-path="1.56.77" d="M552,-3.062C592,-3.062,592,49.5,632,49.5" stroke-width="1.375" stroke="rgb(23, 190, 207)"/><path class="markmap-link" data-depth="4" data-path="1.90.96.97" d="M857,128.063C897,128.063,897,102.781,937,102.781" stroke-width="1.1875" stroke="rgb(148, 103, 189)"/><path class="markmap-link" data-depth="4" data-path="1.90.96.98" d="M857,128.063C897,128.063,897,148.969,937,148.969" stroke-width="1.1875" stroke="rgb(148, 103, 189)"/><path class="markmap-link" data-depth="4" data-path="1.90.96.100" d="M857,128.063C897,128.063,897,175.156,937,175.156" stroke-width="1.1875" stroke="rgb(148, 103, 189)"/><path class="markmap-link" data-depth="3" data-path="1.90.91" d="M552,148.25C592,148.25,592,101.688,632,101.688" stroke-width="1.375" stroke="rgb(148, 103, 189)"/><path class="markmap-link" data-depth="3" data-path="1.90.96" d="M552,148.25C592,148.25,592,128.063,632,128.063" stroke-width="1.375" stroke="rgb(148, 103, 189)"/><path class="markmap-link" data-depth="3" data-path="1.90.117" d="M552,148.25C592,148.25,592,154.438,632,154.438" stroke-width="1.375" stroke="rgb(148, 103, 189)"/><g class="markmap-highlight"><rect x="942.9524027990054" y="-142.73509720099455" width="446.0951944019891" height="72.09519440198909"/></g><g data-depth="4" data-path="1.2.3.4" class="markmap-node markmap-fold" transform="translate(948, -288.1875)"><line stroke="#ff7f0e" stroke-width="1.1875" x1="-1" x2="438" y1="42.59375" y2="42.59375"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="420" height="42"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><img src="./img/1.png" width="420" /><br /><small><i>Dimensión contextual y dinámica del proceso evaluativo.</i></small></div></div></foreignObject></g><g data-depth="3" data-path="1.2.3" class="markmap-node" transform="translate(632, -287.1875)"><line stroke="#ff7f0e" stroke-width="1.375" x1="-1" x2="238" y1="40.6875" y2="40.6875"/><circle stroke-width="1.5" r="6" stroke="#ff7f0e" fill="var(--markmap-circle-open-bg)" cx="236" cy="40.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Evaluación como proceso dinámico y contextualizado</div></div></foreignObject></g><g data-depth="3" data-path="1.2.5" class="markmap-node markmap-fold" transform="translate(632, -240.8125)"><line stroke="#ff7f0e" stroke-width="1.375" x1="-1" x2="87" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#ff7f0e" fill="#ff7f0e" cx="85" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="69" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Concepto</div></div></foreignObject></g><g data-depth="3" data-path="1.2.13" class="markmap-node markmap-fold" transform="translate(632, -214.4375)"><line stroke="#ff7f0e" stroke-width="1.375" x1="-1" x2="238" y1="40.6875" y2="40.6875"/><circle stroke-width="1.5" r="6" stroke="#ff7f0e" fill="#ff7f0e" cx="236" cy="40.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Relación con la enseñanza y el aprendizaje</div></div></foreignObject></g><g data-depth="3" data-path="1.2.22" class="markmap-node markmap-fold" transform="translate(632, -168.0625)"><line stroke="#ff7f0e" stroke-width="1.375" x1="-1" x2="102" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#ff7f0e" fill="#ff7f0e" cx="100" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="84" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Idea central</div></div></foreignObject></g><g data-depth="2" data-path="1.2" class="markmap-node" transform="translate(316, -247.625)"><line stroke="rgb(255, 127, 14)" stroke-width="1.75" x1="-1" x2="238" y1="60.875" y2="60.875"/><circle stroke-width="1.5" r="6" stroke="#ff7f0e" fill="var(--markmap-circle-open-bg)" cx="236" cy="60.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="60"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">1. ¿Qué es evaluación y cuál es su relación con la enseñanza y el aprendizaje?</div></div></foreignObject></g><g data-depth="2" data-path="1.30" class="markmap-node markmap-fold" transform="translate(316, -155.78125)"><line stroke="rgb(188, 189, 34)" stroke-width="1.75" x1="-1" x2="238" y1="40.875" y2="40.875"/><circle stroke-width="1.5" r="6" stroke="#bcbd22" fill="#bcbd22" cx="236" cy="40.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">2. ¿Para qué y por qué evaluar?</div></div></foreignObject></g><g data-depth="4" data-path="1.56.57.58" class="markmap-node markmap-fold" transform="translate(948, -137.6875)"><line stroke="#17becf" stroke-width="1.1875" x1="-1" x2="438" y1="62.59375" y2="62.59375"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="420" height="62"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><img src="./img/3.png" width="420" /><br /><small><i>Integración constructivista entre enseñanza, aprendizaje y error formativo.</i></small></div></div></foreignObject></g><g data-depth="3" data-path="1.56.57" class="markmap-node" transform="translate(632, -136.6875)"><line stroke="#17becf" stroke-width="1.375" x1="-1" x2="238" y1="60.6875" y2="60.6875"/><circle stroke-width="1.5" r="6" stroke="#17becf" fill="var(--markmap-circle-open-bg)" cx="236" cy="60.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="60"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Fundamentos del constructivismo en la evaluación</div></div></foreignObject></g><g data-depth="3" data-path="1.56.59" class="markmap-node markmap-fold" transform="translate(632, -70.3125)"><line stroke="#17becf" stroke-width="1.375" x1="-1" x2="237" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#17becf" fill="#17becf" cx="235" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="219" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Qué plantea el constructivismo</div></div></foreignObject></g><g data-depth="3" data-path="1.56.64" class="markmap-node markmap-fold" transform="translate(632, -43.9375)"><line stroke="#17becf" stroke-width="1.375" x1="-1" x2="238" y1="40.6875" y2="40.6875"/><circle stroke-width="1.5" r="6" stroke="#17becf" fill="#17becf" cx="236" cy="40.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">El error desde una mirada constructivista</div></div></foreignObject></g><g data-depth="3" data-path="1.56.72" class="markmap-node markmap-fold" transform="translate(632, 2.4375)"><line stroke="#17becf" stroke-width="1.375" x1="-1" x2="165" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#17becf" fill="#17becf" cx="163" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="147" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Evaluación dinámica</div></div></foreignObject></g><g data-depth="3" data-path="1.56.77" class="markmap-node markmap-fold" transform="translate(632, 28.8125)"><line stroke="#17becf" stroke-width="1.375" x1="-1" x2="230" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#17becf" fill="#17becf" cx="228" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="212" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Toma de decisión pedagógica</div></div></foreignObject></g><g data-depth="2" data-path="1.56" class="markmap-node" transform="translate(316, -83.9375)"><line stroke="rgb(23, 190, 207)" stroke-width="1.75" x1="-1" x2="238" y1="80.875" y2="80.875"/><circle stroke-width="1.5" r="6" stroke="#17becf" fill="var(--markmap-circle-open-bg)" cx="236" cy="80.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="80"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">3. Toma de decisión pedagógica/didáctica y concepción del aprendizaje: el constructivismo</div></div></foreignObject></g><g data-depth="3" data-path="1.90.91" class="markmap-node markmap-fold" transform="translate(632, 81)"><line stroke="#9467bd" stroke-width="1.375" x1="-1" x2="166" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#9467bd" fill="#9467bd" cx="164" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="148" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Evaluación auténtica</div></div></foreignObject></g><g data-depth="4" data-path="1.90.96.97" class="markmap-node markmap-fold" transform="translate(937, 60.1875)"><line stroke="#9467bd" stroke-width="1.1875" x1="-1" x2="438" y1="42.59375" y2="42.59375"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="420" height="42"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+<p data-lines="126,127"><img src="./img/2.png" width="420" /><br /><small><i>Saberes integrados en el enfoque basado en competencias.</i></small></p></div></div></foreignObject></g><g data-depth="4" data-path="1.90.96.98" class="markmap-node markmap-fold" transform="translate(937, 108.375)"><line stroke="#9467bd" stroke-width="1.1875" x1="-1" x2="238" y1="40.59375" y2="40.59375"/><circle stroke-width="1.5" r="6" stroke="#9467bd" fill="#9467bd" cx="236" cy="40.59375"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+<p data-lines="128,129"><strong>Castillo Arredondo y Cabrerizo Diago</strong></p></div></div></foreignObject></g><g data-depth="4" data-path="1.90.96.100" class="markmap-node markmap-fold" transform="translate(937, 154.5625)"><line stroke="#9467bd" stroke-width="1.1875" x1="-1" x2="71" y1="20.59375" y2="20.59375"/><circle stroke-width="1.5" r="6" stroke="#9467bd" fill="#9467bd" cx="69" cy="20.59375"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="53" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+<p data-lines="130,131">Evalúa:</p></div></div></foreignObject></g><g data-depth="3" data-path="1.90.96" class="markmap-node" transform="translate(632, 107.375)"><line stroke="#9467bd" stroke-width="1.375" x1="-1" x2="227" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#9467bd" fill="var(--markmap-circle-open-bg)" cx="225" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="209" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Evaluación por competencias</div></div></foreignObject></g><g data-depth="3" data-path="1.90.117" class="markmap-node markmap-fold" transform="translate(632, 133.75)"><line stroke="#9467bd" stroke-width="1.375" x1="-1" x2="174" y1="20.6875" y2="20.6875"/><circle stroke-width="1.5" r="6" stroke="#9467bd" fill="#9467bd" cx="172" cy="20.6875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="156" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Evaluación formadora</div></div></foreignObject></g><g data-depth="2" data-path="1.90" class="markmap-node" transform="translate(316, 87.375)"><line stroke="rgb(148, 103, 189)" stroke-width="1.75" x1="-1" x2="238" y1="60.875" y2="60.875"/><circle stroke-width="1.5" r="6" stroke="#9467bd" fill="var(--markmap-circle-open-bg)" cx="236" cy="60.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="60"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">4. Relación con el enfoque de evaluación que propone la materia</div></div></foreignObject></g><g data-depth="2" data-path="1.126" class="markmap-node markmap-fold" transform="translate(316, 154.125)"><line stroke="rgb(255, 127, 14)" stroke-width="1.75" x1="-1" x2="238" y1="40.875" y2="40.875"/><circle stroke-width="1.5" r="6" stroke="#ff7f0e" fill="#ff7f0e" cx="236" cy="40.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">5. Respuesta a preguntas clásicas sobre la evaluación</div></div></foreignObject></g><g data-depth="2" data-path="1.204" class="markmap-node markmap-fold" transform="translate(316, 200.875)"><line stroke="rgb(44, 160, 44)" stroke-width="1.75" x1="-1" x2="152" y1="20.875" y2="20.875"/><circle stroke-width="1.5" r="6" stroke="#2ca02c" fill="#2ca02c" cx="150" cy="20.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="134" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">6. Idea integradora</div></div></foreignObject></g><g data-depth="2" data-path="1.218" class="markmap-node markmap-fold" transform="translate(316, 227.625)"><line stroke="rgb(214, 39, 40)" stroke-width="1.75" x1="-1" x2="151" y1="20.875" y2="20.875"/><circle stroke-width="1.5" r="6" stroke="#d62728" fill="#d62728" cx="149" cy="20.875"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="133" height="20"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">7. Mirada personal</div></div></foreignObject></g><g data-depth="1" data-path="1" class="markmap-node" transform="translate(0, -20)"><line stroke="rgb(31, 119, 180)" stroke-width="2.5" x1="-1" x2="238" y1="41.25" y2="41.25"/><circle stroke-width="1.5" r="6" stroke="#1f77b4" fill="var(--markmap-circle-open-bg)" cx="236" cy="41.25"/><foreignObject class="markmap-foreign" x="8" y="0" style="opacity: 1;" width="220" height="40"><div xmlns="http://www.w3.org/1999/xhtml"><div xmlns="http://www.w3.org/1999/xhtml">Mapa conceptual: la evaluación educativa</div></div></foreignObject></g></g></svg>

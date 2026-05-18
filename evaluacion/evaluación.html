@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Conceptual: Evaluación Educativa</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0"></script>
+  <!-- Librería para capturar el mapa como imagen PNG -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body, html { 
+      height: 100%; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      overflow: hidden; 
+    }
+    
+    svg { 
+      width: 100%; 
+      height: 100vh; 
+    }
+    
+    .glass-panel {
+      position: fixed;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+    }
+    
+    .title-banner {
+      top: 20px;
+      left: 20px;
+      padding: 15px 25px;
+    }
+    
+    .title-banner h1 {
+      font-size: 20px;
+      color: #2c3e50;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    
+    .title-banner p {
+      margin: 4px 0 0 0;
+      font-size: 13px;
+      color: #576574;
+      font-weight: 500;
+    }
+    
+    .instructions {
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      font-size: 13px;
+      color: #34495e;
+      pointer-events: none;
+      line-height: 1.6;
+    }
+    
+    .instructions b { 
+      color: #2980b9; 
+      font-size: 14px; 
+    }
+
+    .toolbar {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      padding: 12px 20px;
+      border-radius: 30px;
+    }
+
+    .toolbar button {
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar button.btn-green {
+      background: #27ae60;
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
+    .toolbar button.btn-green:hover {
+      background: #1e8449;
+      box-shadow: 0 6px 16px rgba(39, 174, 96, 0.4);
+    }
+
+    .toolbar button:hover {
+      background: #1f6391;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(41, 128, 185, 0.4);
+    }
+    
+    .markmap img {
+      border-radius: 6px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      object-fit: cover;
+    }
+
+    .root-title {
+      font-size: 1.5em;
+      font-weight: 800;
+      color: #1a5276;
+      background: white;
+      padding: 8px 20px;
+      border-radius: 24px;
+      border: 3px solid #2980b9;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ── Estilos de impresión ── */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 8mm;
+      }
+      body, html {
+        overflow: visible !important;
+        background: white !important;
+        height: auto !important;
+      }
+      .glass-panel {
+        display: none !important;
+      }
+      svg#markmap {
+        width: 100% !important;
+        height: 100% !important;
+        position: static !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="glass-panel title-banner">
+    <h1>🎓 La Evaluación Educativa</h1>
+    <p>Mapa Conceptual Dinámico</p>
+  </div>
+
+  <div class="glass-panel instructions">
+    ✨ <b>Controles del Mapa</b><br>
+    🖱️ <b>Arrastra</b> el fondo para moverte<br>
+    🔍 <b>Rueda del mouse</b> para acercar/alejar<br>
+    👆 <b>Clic en los círculos</b> para expandir/colapsar
+  </div>
+
+  <div class="glass-panel toolbar">
+    <button onclick="expandAll()">🔽 Expandir Todo</button>
+    <button onclick="collapseAll()">🔼 Contraer Todo</button>
+    <button class="btn-green" onclick="saveAsPNG()" id="btnSave">📸 Guardar como PNG</button>
+  </div>
+
+  <svg id="markmap" class="markmap"></svg>
+
+<script type="text/markdown" id="markdown-content">
+---
+markmap:
+  colorFreezeLevel: 4
+  initialExpandLevel: 2
+  maxWidth: 400
+  color:
+    - '#2E86C1'
+    - '#E67E22'
+    - '#27AE60'
+    - '#E74C3C'
+    - '#8E44AD'
+    - '#D35400'
+---
+
+# <span class="root-title">🎓 La evaluación<br>educativa</span><br/><audio controls src="./img/0.mp3" style="height: 30px; width: 220px; margin-top: 10px;"></audio>
+
+## 1️⃣ ¿Qué es y su relación con enseñanza-aprendizaje?<br/><audio controls src="./img/1.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### Proceso dinámico
+- 🖼️ <img src="./img/1.png" width="350" height="287"><br/><small><i>Dimensión contextual y dinámica.</i></small>
+
+### Concepto
+- **Castillo & Cabrerizo:** Proceso **dinámico, abierto y contextualizado**.
+- **Tenbrink:** Tres operaciones articuladas:
+  - 1. Obtener información rigurosa
+  - 2. Formular juicios de valor
+  - 3. Tomar decisiones
+
+### Relación Enseñanza-Aprendizaje
+- **Álvarez Méndez:** Parte constitutiva del aprendizaje, no separada.
+- **Celman:** Herramienta de conocimiento para comprender y mejorar.
+- **Castillo & Cabrerizo:** Punto de encuentro didáctico.
+- **Litwin:** Atribuir valor en situaciones concretas.
+
+### Idea central
+- ❌ **No es un apéndice**.
+- ✅ Es parte **constitutiva e indisociable**.
+- Permite: regular el proceso, orientar decisiones y dialogar pedagógicamente.
+
+## 2️⃣ ¿Para qué y por qué evaluar?<br/><audio controls src="./img/2.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### Por qué (Funciones)
+- 🧭 **Diagnóstica:** Conocer el punto de partida del alumno.
+- ⚙️ **Formativa/Reguladora:** Acompañar y ajustar durante el proceso.
+- 🏁 **Sumativa:** Valorar los resultados al cierre.
+
+### Para qué (Finalidades)
+- Tomar decisiones pedagógicas.
+- Adecuar la enseñanza a necesidades y ritmos.
+- Promover aprendizajes a partir del error.
+- Calificar, facilitar la promoción y acreditar saberes.
+- **Transformar la evaluación en herramienta de conocimiento.**
+
+## 3️⃣ Toma de decisión y Constructivismo<br/><audio controls src="./img/3.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### Fundamentos
+- 🖼️ <img src="./img/3.png" width="350" height="321"><br/><small><i>Integración constructivista.</i></small>
+
+### Postulado Constructivista
+- **Allal:** Comprender el funcionamiento cognitivo frente a la tarea.
+- **Díaz Barriga:** Coherencia total entre enseñar, aprender y evaluar.
+
+### 💡 El Error Formativo
+- **Allal:** No son fracasos, sino indicadores de estrategias y obstáculos.
+- Permiten observar cómo piensa el alumno y qué ayuda necesita.
+
+### Evaluación Dinámica
+- Interacción profesor-alumno observando avances con ayuda.
+- **Vigotsky:** Actuar sobre la Zona de Desarrollo Próximo (ZDP).
+
+### Decisión Pedagógica
+- El docente interviene durante el proceso brindando pistas y andamiajes.
+- Favorece la modificabilidad, autonomía y disponibilidad para aprender.
+
+## 4️⃣ Enfoque de la materia<br/><audio controls src="./img/4.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### 🌍 Evaluación Auténtica
+- Tareas complejas, activas y cercanas a la vida real.
+- Valorar desempeños en contextos significativos (Díaz Barriga).
+
+### 🧩 Por Competencias
+- 🖼️ <img src="./img/2.png" width="350" height="164"><br/><small><i>Saberes integrados.</i></small>
+- Desempeño integral:
+  - 🧠 **Saber:** Conceptos e información.
+  - 🛠️ **Saber hacer:** Habilidades y procedimientos.
+  - ❤️ **Saber ser:** Actitudes y valores.
+  - 🔄 **Saber aprender:** Metacognición y autonomía.
+
+### 🌱 Evaluación Formadora
+- **Jorba & Sanmartí:** El alumno aprende a regular su propio proceso.
+- Favorece la autoevaluación, metacognición y mejora autónoma.
+
+## 5️⃣ Preguntas clásicas<br/><audio controls src="./img/5.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### 🎯 ¿Qué evaluar?
+- Competencias básicas, conocimientos, habilidades, actitudes, procesos y resultados.
+
+### 🛠️ ¿Cómo evaluar?
+- Metodologías variadas, cuantitativas y cualitativas.
+- Fomentar la creatividad y la reflexión sobre el proceso.
+
+### ⏱️ ¿Cuándo evaluar?
+- **Antes:** Inicial / Diagnóstica.
+- **Durante:** Procesual / Formativa / Reguladora.
+- **Final:** Final / Sumativa.
+
+### 📋 ¿Con qué? (Instrumentos)
+- Rúbricas o matrices de valoración (Ahumada).
+- Portafolios de evidencias (Airasian, McKeachie).
+- Listas de cotejo, producciones escritas, proyectos y trabajo colaborativo.
+
+### 👥 ¿Quién evalúa?
+- **Heteroevaluación:** Docente a alumno.
+- **Autoevaluación:** El propio alumno analiza su aprendizaje.
+- **Coevaluación:** Los pares valoran procesos o producciones.
+
+## 6️⃣ Idea integradora<br/><audio controls src="./img/6.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### Síntesis
+- Evaluar para **comprender, decidir y mejorar**.
+- No se reduce a medir ni a calificar.
+- *"Acompañar el aprendizaje como quien enciende una linterna, no como quien cuenta los pasos al final."*
+
+## 7️⃣ Mirada personal<br/><audio controls src="./img/7.mp3" style="height: 30px; width: 200px; margin-top: 8px;"></audio>
+
+### 🔍 El corpus delicti evaluativo
+- 🖼️ <img src="./img/corpus%20delicti.jpg" width="300" height="153"><br/><small><i>Mi primera evaluación (tal como apareció en <a href="https://padlet.com/mpaz85/nos-presentamos-nvle6d91na42b3dc/wish/kxodWG26Nz0bZgP7" target="_blank" style="color: #2980b9; text-decoration: underline;">mi presentación</a> para esa materia)</i></small>
+
+### Reflexión final
+- 🔨 **No es un martillo:** que cae sobre el error.
+- 🔦 **Es una linterna:** que permite ver mejor el camino.
+- Si solo da nota: califica sin enseñar.
+- Con retroalimentación: ayuda a comprender qué pasó, qué se necesita y cómo seguir.
+</script>
+
+  <script>
+    let mm;
+    let originalRoot; // stored as a plain JS object (JSON-safe copy of the parsed tree)
+
+    // Apply fold states recursively on a deep clone - never mutates the original
+    function deepCloneWithFold(node, foldLevel, currentLevel = 0) {
+      return {
+        content: node.content,
+        depth:   node.depth,
+        payload: Object.assign({}, node.payload, { fold: currentLevel >= foldLevel ? 1 : 0 }),
+        children: Array.isArray(node.children)
+          ? node.children.map(c => deepCloneWithFold(c, foldLevel, currentLevel + 1))
+          : []
+      };
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const markdown = document.getElementById('markdown-content').textContent;
+      const { Markmap, Transformer, deriveOptions } = window.markmap;
+
+      const transformer = new Transformer();
+      const { root } = transformer.transform(markdown);
+
+      // Store a safe JSON copy of the original tree (before any fold mutations)
+      originalRoot = JSON.parse(JSON.stringify(root));
+
+      // deriveOptions converts color arrays → color functions, numbers, booleans, etc.
+      const frontmatter = root.payload?.markmap || {};
+      const derived = deriveOptions(frontmatter);
+
+      const svg = document.getElementById('markmap');
+      mm = Markmap.create(svg, {
+        autoFit: true,
+        fitRatio: 0.92,
+        paddingX: 50,
+        duration: 400,
+        initialExpandLevel: 2,  // start at level 2
+        ...derived               // applies color fn, maxWidth, etc. from frontmatter
+      }, root);
+    });
+
+    window.expandAll = function() {
+      if (!mm || !originalRoot) return;
+      try {
+        // initialExpandLevel -1 means "never fold" in initializeData
+        mm.setOptions({ initialExpandLevel: -1 });
+        mm.setData(JSON.parse(JSON.stringify(originalRoot)));
+        setTimeout(() => mm.fit(), 60);
+      } catch(e) { console.error('expandAll error:', e); }
+    };
+
+    window.collapseAll = function() {
+      if (!mm || !originalRoot) return;
+      try {
+        // Restore fold at level 2
+        mm.setOptions({ initialExpandLevel: 2 });
+        mm.setData(JSON.parse(JSON.stringify(originalRoot)));
+        setTimeout(() => mm.fit(), 60);
+      } catch(e) { console.error('collapseAll error:', e); }
+    };
+
+    window.saveAsPNG = function() {
+      const btn = document.getElementById('btnSave');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '⏳ Generando...';
+      
+      const uiElements = document.querySelectorAll('.glass-panel');
+      uiElements.forEach(el => el.style.display = 'none');
+
+      // Expandimos todo para que el PNG salga completo
+      mm.setOptions({ initialExpandLevel: -1 });
+      mm.setData(JSON.parse(JSON.stringify(originalRoot)));
+
+      setTimeout(() => {
+        mm.fit().then(() => {
+          setTimeout(() => {
+            htmlToImage.toPng(document.body, { 
+              bgcolor: '#f5f7fa',
+              pixelRatio: 2
+            })
+            .then(function (dataUrl) {
+              const link = document.createElement('a');
+              link.download = 'Mapa_Evaluacion_Educativa.png';
+              link.href = dataUrl;
+              link.click();
+
+              // Restaurar UI y nivel de expansión
+              uiElements.forEach(el => el.style.display = '');
+              btn.innerHTML = originalText;
+              mm.setOptions({ initialExpandLevel: 2 });
+              mm.setData(JSON.parse(JSON.stringify(originalRoot)));
+              setTimeout(() => mm.fit(), 60);
+            })
+            .catch(function (error) {
+              console.error('Error capturando el mapa:', error);
+              uiElements.forEach(el => el.style.display = '');
+              btn.innerHTML = '❌ Error';
+              setTimeout(() => btn.innerHTML = originalText, 2000);
+            });
+          }, 300);
+        });
+      }, 600);
+    };
+  </script>
+</body>
+</html>

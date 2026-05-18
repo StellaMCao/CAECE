@@ -17,8 +17,16 @@
     body, html { 
       height: 100%; 
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
+      margin: 0; padding: 0;
+      background: #f5f7fa;
+    }
+    
+    #capture-container {
+      width: 100%;
+      height: 100vh;
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      overflow: hidden; 
+      overflow: hidden;
+      position: relative;
     }
     
     svg { 
@@ -160,25 +168,27 @@
 </head>
 <body>
   
-  <div class="glass-panel title-banner">
-    <h1>🎓 La Evaluación Educativa</h1>
-    <p>Mapa Conceptual Dinámico</p>
-  </div>
+  <div id="capture-container">
+    <div class="glass-panel title-banner">
+      <h1>🎓 La Evaluación Educativa</h1>
+      <p>Mapa Conceptual Dinámico</p>
+    </div>
 
-  <div class="glass-panel instructions">
-    ✨ <b>Controles del Mapa</b><br>
-    🖱️ <b>Arrastra</b> el fondo para moverte<br>
-    🔍 <b>Rueda del mouse</b> para acercar/alejar<br>
-    👆 <b>Clic en los círculos</b> para expandir/colapsar
-  </div>
+    <div class="glass-panel instructions">
+      ✨ <b>Controles del Mapa</b><br>
+      🖱️ <b>Arrastra</b> el fondo para moverte<br>
+      🔍 <b>Rueda del mouse</b> para acercar/alejar<br>
+      👆 <b>Clic en los círculos</b> para expandir/colapsar
+    </div>
 
-  <div class="glass-panel toolbar">
-    <button onclick="expandAll()">🔽 Expandir Todo</button>
-    <button onclick="collapseAll()">🔼 Contraer Todo</button>
-    <button class="btn-green" onclick="saveAsPNG()" id="btnSave">📸 Guardar como PNG</button>
-  </div>
+    <div class="glass-panel toolbar">
+      <button onclick="expandAll()">🔽 Expandir Todo</button>
+      <button onclick="collapseAll()">🔼 Contraer Todo</button>
+      <button class="btn-green" onclick="saveAsPNG()" id="btnSave">📸 Guardar como PNG</button>
+    </div>
 
-  <svg id="markmap" class="markmap"></svg>
+    <svg id="markmap" class="markmap"></svg>
+  </div>
 
 <script type="text/markdown" id="markdown-content">
 ---
@@ -403,12 +413,13 @@ markmap:
               audioPlaceholders.push({ placeholder, audio: a });
             });
 
-            htmlToImage.toPng(document.body, { 
-              bgcolor: '#f5f7fa',
+            const captureNode = document.getElementById('capture-container');
+
+            htmlToImage.toPng(captureNode, { 
               pixelRatio: 2,
               filter: (node) => {
-                // Filtrar elementos inyectados por extensiones de Chrome (como el community_highlight)
-                if (node.id && typeof node.id === 'string' && node.id.includes('community_highlight')) return false;
+                // Filtro extremo: ignorar CUALQUIER elemento inyectado que no esté en nuestro contenedor principal
+                if (node.tagName === 'IMG' && node.id && node.id.includes('community_highlight')) return false;
                 if (node.src && typeof node.src === 'string' && node.src.startsWith('chrome-extension://')) return false;
                 return true;
               }

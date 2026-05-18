@@ -392,6 +392,10 @@ markmap:
       setTimeout(() => {
         mm.fit().then(() => {
           setTimeout(() => {
+            // Ocultamos las etiquetas de audio momentáneamente para evitar que html-to-image falle
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(a => a.style.display = 'none');
+
             htmlToImage.toPng(document.body, { 
               bgcolor: '#f5f7fa',
               pixelRatio: 2
@@ -402,8 +406,9 @@ markmap:
               link.href = dataUrl;
               link.click();
 
-              // Restaurar UI y nivel de expansión
+              // Restaurar UI, audios y nivel de expansión
               uiElements.forEach(el => el.style.display = '');
+              audios.forEach(a => a.style.display = '');
               btn.innerHTML = originalText;
               mm.setOptions({ initialExpandLevel: 2 });
               mm.setData(JSON.parse(JSON.stringify(originalRoot)));
@@ -412,6 +417,7 @@ markmap:
             .catch(function (error) {
               console.error('Error capturando el mapa:', error);
               uiElements.forEach(el => el.style.display = '');
+              audios.forEach(a => a.style.display = '');
               btn.innerHTML = '❌ Error';
               setTimeout(() => btn.innerHTML = originalText, 2000);
             });

@@ -491,15 +491,15 @@ markmap:
 
     // Zoom Logic
     window.zoomIn = function() {
-      if (mm) {
-        const svg = d3.select(mm.svg);
+      if (mm && mm.zoom) {
+        const svg = d3.select('#markmap');
         mm.zoom.scaleBy(svg.transition().duration(300), 1.2);
       }
     };
     
     window.zoomOut = function() {
-      if (mm) {
-        const svg = d3.select(mm.svg);
+      if (mm && mm.zoom) {
+        const svg = d3.select('#markmap');
         mm.zoom.scaleBy(svg.transition().duration(300), 0.8);
       }
     };

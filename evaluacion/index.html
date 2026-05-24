@@ -144,6 +144,20 @@
       line-height: 1.3;
     }
 
+    /* Estilo para los conectores (*Según:*, *Implica:*, etc.) */
+    .markmap em {
+      font-size: 0.85em;
+      color: #576574;
+      background: #f1f2f6;
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: 1px dashed #c8d6e5;
+      font-style: normal;
+      display: inline-block;
+      margin-top: -2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
     .play-btn {
       display: inline-flex;
       align-items: center;
@@ -526,7 +540,9 @@ markmap:
       mm = Markmap.create(svg, {
         autoFit: true,
         fitRatio: 0.92,
-        paddingX: 50,
+        paddingX: 16,
+        spacingHorizontal: 40,
+        spacingVertical: 4,
         duration: 400,
         initialExpandLevel: 2,  // start at level 2
         ...derived               // applies color fn, maxWidth, etc. from frontmatter

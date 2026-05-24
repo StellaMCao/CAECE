@@ -32,6 +32,9 @@
     svg { 
       width: 100%; 
       height: 100vh; 
+      text-rendering: geometricPrecision !important;
+      shape-rendering: geometricPrecision !important;
+      image-rendering: -webkit-optimize-contrast !important;
     }
     
     .glass-panel {
@@ -550,7 +553,7 @@ markmap:
         fitRatio: 0.92,
         paddingX: 16,
         spacingHorizontal: 40,
-        spacingVertical: 10,    // Reducido de 24 a 10 para hacer el mapa más compacto verticalmente
+        spacingVertical: 8,     // Reducido de 10 a 8 para que el mapa quede un poquito más ajustado (8)
         duration: 400,
         initialExpandLevel: 2,  // start at level 2
         ...derived               // applies color fn, maxWidth, etc. from frontmatter
@@ -611,14 +614,14 @@ markmap:
           setTimeout(() => {
             // En lugar de quitar audios (ya no hay <audio>), solo capturamos el SVG
             htmlToImage.toPng(svgEl, { 
-              backgroundColor: '#ffffff',
-              width: realWidth,
-              height: realHeight,
-              pixelRatio: 2, // Resolución excelente a escala real
-              style: {
-                margin: '0',
-                padding: '0'
-              },
+               backgroundColor: '#ffffff',
+               width: realWidth,
+               height: realHeight,
+               pixelRatio: 3, // Aumentado a 3 para una resolución ultra-alta (3xHD) super nítida
+               style: {
+                 margin: '0',
+                 padding: '0'
+               },
               filter: (node) => {
                 if (node.tagName === 'IMG' && node.id && node.id.includes('community_highlight')) return false;
                 if (node.src && typeof node.src === 'string' && node.src.startsWith('chrome-extension://')) return false;
